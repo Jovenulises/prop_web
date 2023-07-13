@@ -1,0 +1,136 @@
+.h1 {
+    text-shadow: 5px 5px 10px rgba(0, 0, 0, .2);
+    font-weight: 700;
+    font-size: 42px;
+    color: #fff;
+    text-align: center;
+    margin: 17px 0 32px;
+}
+
+.fondo-img {
+    background-image: url('/logo.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+
+.btn-primary {
+    
+    line-height: 43px;
+    flex-grow: 0;
+    flex-shrink: 0;
+    font-weight: 600;
+    font-size: 18px;
+    border-radius: 12px;
+    box-shadow: unset !important;
+    width: 120px !important;
+    min-width: 120px !important;
+    height: 43px !important;
+    background-color: rgb(255, 85, 0) !important;
+    border: none !important;
+    /* Añadido para eliminar el borde */
+    text-align: center;
+    display: flex;
+    /* Añadido para centrar el texto */
+    justify-content: center;
+    /* Añadido para centrar el texto */
+    align-items: center;
+    /* Añadido para centrar el texto */
+    
+}
+
+
+
+.form-element {
+    width: 100%;
+    height: 70%;
+    font-family: Hind, sans-serif;
+    display: flex;
+    flex-flow: row nowrap;
+    background-color: white;
+    margin: 0px;
+    padding: 11px 12px;
+    overflow: hidden;
+    box-sizing: border-box;
+    gap: 8px;
+    border: 1px solid rgb(124, 152, 167);
+    border-radius: 8px;
+    
+}
+
+.dOMxMp {
+    border-radius: 8px;
+    height: 45px;
+    width: auto;
+    padding: 8px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    line-height: 60px;
+    color: black;
+    z-index: 2;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    background-color: #fff;
+}
+
+.center-ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-element-container {
+    display: flex !important;
+    justify-content: space-between !important;
+  }
+  
+  .form-element-container > * {
+    flex: 1 1 auto !important;
+  }
+  
+
+.select-container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.select2-container .select2-selection--single {
+    height: 100%;
+    width: 200px;
+    /* puedes ajustar el tamaño a lo que necesites */
+    border: 1px solid rgb(124, 152, 167);
+    border-radius: 8px;
+    background: rgb(255, 255, 255);
+    cursor: pointer;
+    -webkit-appearance: none;
+    /* para Chrome y Safari */
+    -moz-appearance: none;
+    /* para Firefox */
+    appearance: none;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+    line-height: 47px;
+    font-size: 18px;
+    font-weight: 400;
+    color: rgb(0, 0, 0);
+    padding-left: 12px;
+    text-indent: 1px;
+}
+
+.select2-container {
+    width: 100% !important;
+
+
+
+
+}
+
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+    font-size: 18px;
+    /* por ejemplo */
+}
