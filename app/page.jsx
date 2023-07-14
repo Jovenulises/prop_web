@@ -75,14 +75,13 @@ async function IndexPage() {
  /*  console.log(inmuble, estados, municipios) */
   return (
     <div>
-      <h1></h1>
-      <Filter />
-      <Inmuble inmuble={inmuble} estados={estados} municipios={municipios} />
-      <div>
-        {/* {JSON.stringify(inmuble)}  */}
-      </div>
-  
-    </div>
+    <Filter />
+    <Inmuble 
+      inmuble={inmuble} 
+      estados={estados} 
+      municipios={municipios} 
+    />
+  </div>
   );
 };
 

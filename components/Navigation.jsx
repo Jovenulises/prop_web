@@ -40,6 +40,6 @@ export function Navigation() {
                     </a>
                 </div>
             </div>
-        </header >
+        </header>
     )
 }

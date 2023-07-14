@@ -1,4 +1,4 @@
-"use client"
+/* "use client"
 
 import Mapa from './../../components/Google';
 
@@ -7,11 +7,11 @@ async function fetchDatos() {
     const url = "https://www.propmexico.com/administrador/restApi/todosDesarrollos";
     const username = "tpTBK2QvT75a";
     const password = "9hntUZOb6fsw";
-
+  
     const response = await fetch(url, {
-        headers: {
-            Authorization: `Basic ${btoa(`${username}:${password}`)}`,
-        },
+      headers: {
+        Authorization: `Basic ${btoa(`${username}:${password}`)}`,
+      },
     });
 
     if (response.ok) {
@@ -21,12 +21,12 @@ async function fetchDatos() {
         console.error("Error en la respuesta del servidor para colonias:", response.status);
     }
 
-    return [];
+    return {};
 }
 
 async function MapaPage() {
     const inmuble = await fetchDatos();
-    
+    console.log(inmuble)
     return (
         <div>
             <Mapa inmuble={inmuble} />
@@ -35,3 +35,4 @@ async function MapaPage() {
 }
 
 export default MapaPage;
+ */

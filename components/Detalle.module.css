@@ -1,0 +1,94 @@
+.gift-m {
+    width: 4px;
+    height: 4px;
+}
+
+.text-justify {
+    text-align: justify !important;
+}
+
+/*botones////////////////////*/
+.button-heart {
+    border-radius: 10px;
+    /* Esto hace que el botón sea completamente redondo */
+    padding: 8px;
+    /* Ajusta esto para cambiar el tamaño del botón */
+    overflow: hidden;
+    /* Esto asegura que el contenido del botón (el SVG) se mantenga dentro de la forma redonda */
+    background-color: white;
+    width: 70px;
+    border-width: 1px;
+
+}
+
+.button-what {
+    border-radius: 10px;
+    width: 80px;
+    /* Esto hace que el botón sea completamente redondo */
+    padding: 10px;
+    /* Ajusta esto para cambiar el tamaño del botón */
+    overflow: hidden;
+    /* Esto asegura que el contenido del botón (el SVG) se mantenga dentro de la forma redonda */
+    background-color: rgb(37, 211, 102);
+    color: white;
+    margin: 0px 0px 0px auto !important;
+    border-color: rgb(8, 161, 64);
+    border: none;
+
+}
+
+.rounded-button {
+    border-radius: 14px !important;
+    padding: 10px 20px !important;
+    background-color: rgb(255, 85, 0);
+    color: white;
+    border: none;
+    width: 100px;
+}
+
+.rounded-button-paseo {
+    border-radius: 14px !important;
+    padding: 10px 20px !important;
+    background-color: rgb(255, 85, 0);
+    color: white;
+    border: none;
+    width: 200px;
+}
+
+.margen {
+
+    margin-top: 0px;
+
+}
+
+@media (max-width: 768px) {
+
+    /* valores para tabletas y teléfonos en orientación horizontal */
+    .margen {
+        margin-top: 0px;
+        margin-bottom: 0px;
+        margin-left: 0px !important;
+        align-content: center !important;
+
+    }
+
+    .margencero {
+        margin: 0px !important;
+
+    }
+
+    .margenboton {
+        margin-left: 5px;
+        margin-right: 0px;
+
+    }
+}
+
+
+/*botones fin*/
+.small-image {
+    width: 40px;
+    height: auto;
+    margin-right: 17px;
+
+}

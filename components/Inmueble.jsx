@@ -15,9 +15,9 @@ function Inmuble({ inmuble, estados, municipios }) {
 
   const router = useRouter()
 
-  const handleLogoClick = (id) => {
-    router.push(`/inmueble/${id}`)
-}
+  const handleLogoClick = () => {
+      router.push(`/detalle/${inmuble.id}`)
+  }
   return (
     <div className={`container  py-1 my-1 property-card ${styles['property-card']}`}>
       {inmuble.map((inmuble) => {
@@ -27,7 +27,7 @@ function Inmuble({ inmuble, estados, municipios }) {
 
         return (
           <div className="row mx-1 my-3 py-2  border border-2 border-dark-subtle  rounded-3 list-group-item-action" key={inmuble.id_inmueble}
-          onClick={() => handleLogoClick(inmuble.id_inmueble)}
+          onClick={handleLogoClick}
           >
             <div className="col-12 col-md-4">
               {inmuble && inmuble.images && (

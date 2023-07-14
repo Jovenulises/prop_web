@@ -49,7 +49,7 @@ const Mapa = ({ inmuble }) => {
 
 export default Mapa;
  */
-
+/* 
 import { useEffect, useRef } from 'react';
 
 const Mapa = () => {
@@ -87,3 +87,4 @@ const Mapa = () => {
 };
 
 export default Mapa;
+ */
