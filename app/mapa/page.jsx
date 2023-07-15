@@ -1,38 +1,45 @@
-/* "use client"
 
-import Mapa from './../../components/Google';
+import MapComponent from './../../components/Google';
 
-async function fetchDatos() {
+
+
+async function fetchDetalle() {
     // Agrega idEstado y idMunicipio como parámetros a fetchData
+
     const url = "https://www.propmexico.com/administrador/restApi/todosDesarrollos";
+
     const username = "tpTBK2QvT75a";
     const password = "9hntUZOb6fsw";
-  
+
     const response = await fetch(url, {
-      headers: {
-        Authorization: `Basic ${btoa(`${username}:${password}`)}`,
-      },
+        headers: {
+            Authorization: `Basic ${btoa(`${username}:${password}`)}`,
+        },
     });
 
     if (response.ok) {
         const data = await response.json();
-        return data.banners.filter(inmueble => inmueble.activo === '1' && inmueble.destacada_solicitar === '1');
-    } else {
-        console.error("Error en la respuesta del servidor para colonias:", response.status);
-    }
+        const detalle = data.banners.filter(inmuebles => inmuebles.activo === '1' && inmuebles.destacada_solicitar === '1');
 
-    return {};
+        return detalle;
+    } else {
+        console.error("Error en la respuesta del servidor para UBIACION:", response.status);
+
+    }
 }
 
 async function MapaPage() {
-    const inmuble = await fetchDatos();
-    console.log(inmuble)
+    const detalle = await fetchDetalle();
+    /* console.log(detalle) */
     return (
         <div>
-            <Mapa inmuble={inmuble} />
+            <div>
+                <MapComponent
+                    detalle={detalle}
+                />
+            </div>
         </div>
     );
-}
+};
 
 export default MapaPage;
- */

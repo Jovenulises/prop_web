@@ -40,7 +40,7 @@ async function fetchData() {
 
   if (response.ok) {
     const data = await response.json();
-    const inmuble = data.banners.filter(inmueble => inmueble.activo === '1' && inmueble.destacada_solicitar === '1');
+    const inmueble = data.banners.filter(inmuebles => inmuebles.activo === '1' && inmuebles.destacada_solicitar === '1');
 
     if (response2.ok) {
       const data2 = await response2.json();
@@ -54,15 +54,15 @@ async function fetchData() {
            const data4 = await response4.json();
            const colonias = data4.colonias; */
 
-        return { inmuble, estados, municipios };
+        return { inmueble, estados, municipios };
       } else {
-        console.error("Error en la respuesta del servidor para colonias:", response4.status);
+        console.error("Error en la respuesta del servidor para colonias:", response3.status);
       }
     } else {
-      console.error("Error en la respuesta del servidor para municipios:", response3.status);
+      console.error("Error en la respuesta del servidor para municipios:", response2.status);
     }
   } else {
-    console.error("Error en la respuesta del servidor para estados:", response2.status);
+    console.error("Error en la respuesta del servidor para estados:", response.status);
 
   }
   return {};
@@ -70,18 +70,23 @@ async function fetchData() {
 }
 
 async function IndexPage() {
-  const { inmuble, estados, municipios } = await fetchData();
+  const { inmueble, estados, municipios } = await fetchData();
 
- /*  console.log(inmuble, estados, municipios) */
+  /*  console.log(inmuble, estados, municipios) */
   return (
     <div>
-    <Filter />
-    <Inmuble 
-      inmuble={inmuble} 
-      estados={estados} 
-      municipios={municipios} 
-    />
-  </div>
+      <div>
+        <Filter/>
+      </div>
+      <div>
+        <Inmuble 
+          inmueble={inmueble} 
+          estados={estados} 
+          municipios={municipios}
+        />
+      </div>
+    </div>
+    
   );
 };
 
