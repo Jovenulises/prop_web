@@ -1,5 +1,6 @@
 import Filter from '../components/Filter';
 import Inmuble from '../components/Inmueble';
+import InmubleFiltrado from '../components/InmuebleFiltrado';
 import 'swiper/css';
 
 async function fetchData() {
@@ -77,19 +78,23 @@ async function IndexPage() {
     <div>
       <div>
         <Filter
-         inmueble={inmueble} 
-         estados={estados} 
-         municipios={municipios}/>
+          inmueble={inmueble}
+          estados={estados}
+          municipios={municipios} />
       </div>
       <div>
-        <Inmuble 
+        <InmubleFiltrado />
+      </div>
+      <div>
+      <Inmuble 
           inmueble={inmueble} 
           estados={estados} 
           municipios={municipios}
-        />
+        /> 
       </div>
     </div>
-    
+
+
   );
 };
 

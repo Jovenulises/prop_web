@@ -59,8 +59,8 @@ async function DetallePage({ params }) {
     return (
 
         <div className="container mt-5">
-            {JSON.stringify(inmuebleId)}
-            <div className="row border d-flex p-4">
+           {/*  {JSON.stringify(inmuebleId)}
+   */}          <div className="row border d-flex p-4">
                 <div className="col-12 col-md-6 ">
                     <img className="img-fluid mt-3" src="/logo.jpg" alt="" />
                 </div>
