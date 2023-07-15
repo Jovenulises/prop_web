@@ -76,7 +76,10 @@ async function IndexPage() {
   return (
     <div>
       <div>
-        <Filter/>
+        <Filter
+         inmueble={inmueble} 
+         estados={estados} 
+         municipios={municipios}/>
       </div>
       <div>
         <Inmuble 
