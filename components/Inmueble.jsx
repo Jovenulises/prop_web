@@ -4,11 +4,13 @@ import 'bootstrap/dist/css/bootstrap.css';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import styles from './Inmueble.module.css';
 import numeral from 'numeral';
+import TipoInmuebleBanner from './TipoInmuebleBanner'
+import ImagenBanner from '../components/ImagenBanner'
 
 
 
 function Inmuble({ inmueble, estados, municipios }) {
-
+  // console.log(inmueble)
   if (!inmueble || !estados || !municipios) {
     return null; // Manejar el caso en el que los datos sean nulos o no estén disponibles
   }
@@ -26,27 +28,23 @@ function Inmuble({ inmueble, estados, municipios }) {
 
 
         return (
-          <div className="row mx-1 my-3 py-2  border border-2 border-dark-subtle  rounded-3 list-group-item-action" key={inmuble.id_inmueble}
-            onClick={handleLogoClick}
-          >
+          <div className="row mx-1 my-3 py-2  border border-2 border-dark-subtle  rounded-3 list-group-item-action" key={inmuble.id_inmueble}>
             <div className="col-12 col-md-4">
-              {inmuble && inmuble.images && (
-                <Swiper navigation={true} className="mySwiper">
-                  {inmuble && inmuble.images && inmuble.images.map((imgObj, idx) => (
-                    <SwiperSlide key={idx}>
-                      <img className="img-fluid mt-2" src={imgObj.image} alt={`Imagen de propiedad ${idx}`} />
-                    </SwiperSlide>
-                  ))}
-                </Swiper>
-              )}
+              <ImagenBanner inmuble={inmuble} />
             </div>
-            <div className="col-12 col-md-8">
-              <div className={`d-flex m-1 ${styles['location']}`}>
+
+
+            <div className="col-12 col-md-8"
+             onClick={handleLogoClick}>
+              <div className={`d-flex mx-1 mt-2 ${styles['location']}`}>
                 <img className={` ${styles['small-image']}`} src="/ic_map_new.png" alt="Icono de ubicación" />
                 <p className="h5 mt-2">{estado && estado.nombre}, {municipio && municipio.nombre}.</p>
+                {inmuble.premio_inmueble && (
+                  <img className={` ${styles['small-image']} ml-auto d-block`} src="/ic_gift_banner.png" alt={inmuble.premio_inmueble} />
+                )}
               </div>
               <h2 className={`h3 m-1 ${styles['property-title']}`}>{inmuble.nombre_desarrollo}</h2>
-              <p className="m-1">Desde</p>
+              <TipoInmuebleBanner modelo_tipo_uno={inmuble.modelo_tipo_uno} />
               <span className={`h3 m-1 ${styles['property-price']}`}>
                 $ {numeral(inmuble.precio).format('0,0').replace(',', ',')} MXN
               </span>

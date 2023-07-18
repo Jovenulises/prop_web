@@ -84,3 +84,18 @@
     margin-right: 17px;
 
 }
+
+
+
+@media (max-width: 768px) {
+
+    /* valores para tabletas y teléfonos en orientación horizontal */
+
+    /*botones fin*/
+    .small-image {
+        width: 30px !important;
+        height: auto;
+    
+
+    }
+}

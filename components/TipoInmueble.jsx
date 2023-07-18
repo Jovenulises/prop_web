@@ -22,7 +22,7 @@ function TipoInmueble({ modelo_tipo_uno, modelo_tipo_dos, modelo_tipo_tres, mode
             break;
     }
 
-    return <p className="ms-5">{tipoInmueble}</p>;
+    return <strong>{tipoInmueble}</strong>;
 }
 
 export default TipoInmueble

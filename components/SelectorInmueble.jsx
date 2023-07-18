@@ -47,7 +47,7 @@ async function fetchEstados() {
 async function SelectorInmueble() {
     const { estados, municipios } = await fetchEstados();
 
-    console.log(inmueble, estados, municipios)
+   // console.log(inmueble, estados, municipios)
     return (
         <div>
             <div>

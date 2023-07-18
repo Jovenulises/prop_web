@@ -48,17 +48,22 @@
 
 .rounded-button-paseo {
     border-radius: 14px !important;
-    padding: 10px 20px !important;
+    padding: 10px 10px !important;
     background-color: rgb(255, 85, 0);
     color: white;
     border: none;
-    width: 200px;
+    width: 120px;
 }
 
 .margen {
 
     margin-top: 0px;
 
+}
+
+
+.h1{
+    color: rgb(73, 73, 73) !important;
 }
 
 @media (max-width: 768px) {

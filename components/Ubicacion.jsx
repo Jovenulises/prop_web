@@ -20,7 +20,7 @@ export default function MapComponent({ lat, lng }) {
         zoom={15}
         center={defaultCenter}
       >
-        <Marker key='marker_1' position={defaultCenter} />
+        <Marker key='marker' position={defaultCenter} />
       </GoogleMap>
     </LoadScript>
   )

@@ -51,7 +51,7 @@ export default function MapComponent({ detalle }) {
                 <div>
                   <h4>{inmueble.nombre_desarrollo}</h4>
                   <p>${inmueble.precio} MXN</p>
-                  {console.log(inmueble.precio)}
+                 {/*  {console.log(inmueble.precio)} */}
                 </div>
               </InfoWindow>
             </Marker>

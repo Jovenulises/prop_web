@@ -1,0 +1,12 @@
+.publicidadDetalle {
+    position: fixed !important;
+    right: 0;
+    top: 12%;
+    z-index: 998;
+}
+
+@media screen and (max-width: 768px) {
+    .publicidadDetalle {
+        display: none;
+    }
+}

@@ -1,0 +1,22 @@
+.border-top {
+    border-top: 1px solid rgb(0, 110, 173);
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-top: 15px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+
+@media (max-width: 768px) {
+
+    /* valores para tabletas y teléfonos en orientación horizontal */
+
+    /*botones fin*/
+    .small-image {
+        width: 70px !important;
+        height: auto;
+        margin-top: 20px;
+
+    }
+}
