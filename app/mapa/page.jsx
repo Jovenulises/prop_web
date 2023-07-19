@@ -19,7 +19,7 @@ async function fetchDetalle() {
 
     if (response.ok) {
         const data = await response.json();
-        const detalle = data.banners.filter(inmuebles => inmuebles.activo === '1' && inmuebles.destacada_solicitar === '1');
+        const detalle = data.banners.filter(inmuebles => inmuebles.activo === '1');
 
         return detalle;
     } else {
