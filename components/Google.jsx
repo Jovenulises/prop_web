@@ -2,11 +2,15 @@
 
 import { GoogleMap, LoadScript, Marker, InfoWindow } from "@react-google-maps/api";
 import numeral from 'numeral';
+import { useRouter } from 'next/navigation'
 
 export default function MapComponent({ detalle }) {
+
+  const router = useRouter()
+
   const propertyTypeToColor = {
-    'CASA': 'red',
-    'DEPARTAMENTO': 'blue',
+    'CASA': '#1146a3',
+    'DEPARTAMENTO': '#b52f2f',
     'RCASA': 'yellow',
     'RDEPARTAMENTO': 'green',
     'CPREVENTA': 'red',
@@ -23,13 +27,6 @@ export default function MapComponent({ detalle }) {
     lng: parseFloat(detalle[0].direccion_longitud)
   }
 
-  const markerIcon = {
-    path: 'M0 -1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm-2 4a2 2 0 0 1 4 0c0 2-2 4-2 4s-2-2-2-4z',
-    fillColor: 'blue',
-    fillOpacity: 1,
-    strokeWeight: 0,
-    scale: 4,
-  };
 
   return (
     <LoadScript googleMapsApiKey='AIzaSyA889ZxazkPDgBYD58fWZEvMNdKjmUSMZo'>
@@ -39,10 +36,23 @@ export default function MapComponent({ detalle }) {
         center={defaultCenter}
       >
         {detalle.map((inmueble, index) => {
-          const propertyColor = propertyTypeToColor[inmueble.modelo_tipo_uno] || 'gray';  // gray será el color predeterminado si no se encuentra una coincidencia
+          const propertyColor = propertyTypeToColor[inmueble.modelo_tipo_uno] || 'gray';
+
+          const markerIcon = {
+            path: 'M0 -1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm-2 4a2 2 0 0 1 4 0c0 2-2 4-2 4s-2-2-2-4z', // SVG path para un círculo
+            fillColor: propertyColor,
+            fillOpacity: 1,
+            strokeWeight: 0,
+            scale: 4,
+          };
+
+          const handleLogoClick = () => {
+            router.push(`/detalle/${inmueble.id_inmueble}/#galeria`)
+          }
+          // gray será el color predeterminado si no se encuentra una coincidencia
           return (
-            <Marker 
-              key={index} 
+            <Marker
+              key={index}
               position={{
                 lat: parseFloat(inmueble.direccion_latitud),
                 lng: parseFloat(inmueble.direccion_longitud)
@@ -53,8 +63,21 @@ export default function MapComponent({ detalle }) {
                 lat: parseFloat(inmueble.direccion_latitud),
                 lng: parseFloat(inmueble.direccion_longitud)
               }}>
-                <div>
-                  <p style={{backgroundColor: propertyColor, color: 'white', padding: '10px'}}> 
+                <div
+                  className="list-group-item-action"
+                  style={{
+                    border: `2px solid ${propertyColor}`,
+                    padding: '10px',
+                    display: 'flex',
+                    height: '100%', // Asegúrate de que el div ocupe todo el espacio disponible
+                    boxSizing: 'border-box' // Para que el padding y el border no aumenten el tamaño total del div
+                  }}
+                  onClick={handleLogoClick}
+                >
+                  <p style={{
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                  }}>
                     $ {numeral(inmueble.precio).format('0,0').replace(',', ',')} MXN
                   </p>
                 </div>

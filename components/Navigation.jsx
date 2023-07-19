@@ -5,7 +5,7 @@ import styles from './NavigationMovil.module.css';
 
 
 
-import {Routes} from '../models';
+import { Routes } from '../models';
 import { slide as Menu } from 'react-burger-menu';
 import { FiMenu } from 'react-icons/fi';
 import { useState } from 'react';
@@ -15,10 +15,14 @@ export function Navigation() {
     return (
         <header id="header" className={`${styles.header} ${styles.fixedTop} ${styles.shadow}`}>
             <div className={`${styles.containerFluid} d-flex justify-content-between align-items-center`}>
-                <div className="d-flex justify-content-between align-items-center" style={{width: '100%'}}>
+                <div className="d-flex justify-content-between align-items-center" style={{ width: '100%' }}>
                     <div className="d-flex justify-content-start align-items-center">
                         <h1 className={`${styles.logo} me-auto me-lg-0`}>
-                            <img className={`mx-4 ${styles.logo}`} src="/logo_prop.webp" alt="Logo de la página" />
+                            <Link href={Routes.HOME}>  {/* Agregar esto */}
+                            
+                                    <img className={`mx-4 ${styles.logo}`} src="/logo_prop.webp" alt="Logo de la página" />
+                                
+                            </Link>  {/* Y esto */}
                         </h1>
                         <nav id="navbar" className={`${styles.navbar} order-last order-lg-0 desktop`}>
                             <ul>
@@ -29,9 +33,9 @@ export function Navigation() {
                             </ul>
                         </nav>
                     </div>
-                    <div  className={`${styles.mobile} px-4 `}>
+                    <div className={`${styles.mobile} px-4 `}>
                         <FiMenu onClick={() => setIsOpen(!isOpen)} className={`${styles.burgerIcon} `} />
-                        <Menu right isOpen={isOpen} customBurgerIcon={ false }  className={`${styles.mobileMenu}`} onClose={() => setIsOpen(false)}>
+                        <Menu right isOpen={isOpen} customBurgerIcon={false} className={`${styles.mobileMenu}`} onClose={() => setIsOpen(false)}>
                             <Link onClick={() => setIsOpen(false)} href={Routes.HOME}>Inicio</Link>
                             <Link onClick={() => setIsOpen(false)} href={Routes.MAPA}>Mapa</Link>
                             <Link onClick={() => setIsOpen(false)} href={Routes.FAVORITO}>Favoritos</Link>

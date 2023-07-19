@@ -23,7 +23,7 @@ function Inmuble({ inmueble, estados, municipios }) {
         const estado = estados.find((estado) => estado.id === inmuble.direccion_estado);
         const municipio = municipios.find((municipio) => municipio.id === inmuble.direccion_municipio);
         const handleLogoClick = () => {
-          router.push(`/detalle/${inmuble.id_inmueble}`)
+          router.push(`/detalle/${inmuble.id_inmueble}/#galeria`)
         }
 
 

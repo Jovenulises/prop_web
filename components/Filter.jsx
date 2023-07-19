@@ -69,7 +69,7 @@ const Filter = ({ inmueble, estados}) => {
                 className={`form-element mx-2 ${styles['form-element']}`}
                 onChange={e => setTipoPropiedad(e.target.value)}
               >
-                <option value="">Tipo de propiedad</option>
+                <option value="">Propiedad</option>
                 <option value="CASA">Casa</option>
                 <option value="DEPARTAMENTO">Departamento</option>
               </select>
@@ -79,7 +79,7 @@ const Filter = ({ inmueble, estados}) => {
                 className={`form-element ${styles['form-element']}`}
                 onChange={e => setTipoTransaccion(e.target.value)}
               >
-                <option value="">Tipo de transacción</option>
+                <option value="">Transacción</option>
                 <option value="Venta">Venta</option>
                 <option value="Renta">Renta</option>
                 <option value="Preventa">Preventa</option>
@@ -91,7 +91,7 @@ const Filter = ({ inmueble, estados}) => {
             <input
               className={`form-control ${styles['form-control']} ${styles['form-element']}`}
               type="text"
-              placeholder="Ingresa ubicaciones o características (ej: alberca)"
+              placeholder="Busca ubicaciones o características (ej: bodega)"
               onChange={e => setClave(e.target.value)}
             />
           </div>
