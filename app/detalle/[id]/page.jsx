@@ -70,7 +70,7 @@ async function DetallePage({ params }) {
                         <div className=' py-3 border-top '>
                             <h1 className='h3'>
                                 <TipoInmueble modelo_tipo_uno={inmuebleId.modelo_tipo_uno} /> en venta en {inmuebleId.estado_name} {inmuebleId.nombre_desarrollo}</h1>
-                            <p>Ubicaciòn del inmueble en {inmuebleId.estado_name}, {inmuebleId.municipio_name}</p>
+                            <p>Ubicación del inmueble en {inmuebleId.estado_name}, {inmuebleId.municipio_name}</p>
                             <div className=' pt-2 border-top'>
                                 <p className="h6 fw-normal">Desde:</p>
                             </div>

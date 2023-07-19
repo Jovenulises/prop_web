@@ -45,7 +45,7 @@ export function Navigation() {
                         </Menu>
                     </div>
                     <div className={styles.desktop}>
-                        <Link href="/publicar">
+                        <Link href="https://wa.me/524424719449?text=Hola%2C%20quiero%20subir%20un%20inmueble.%20%C2%BFPodr%C3%ADa%20darme%20informaci%C3%B3n%3F">
                             <button className={styles.publicar}>Publicar</button>
                         </Link>
                         <a href="https://www.propmexico.com/administrador/" className={styles.linkButton}>

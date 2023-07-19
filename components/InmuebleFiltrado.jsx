@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import styles from './Inmueble.module.css';
 import numeral from 'numeral';
-
+import TipoInmuebleBanner from './TipoInmuebleBanner'
 
 
 function InmubleFiltrado({ inmueblesFiltrados, estados }) {
@@ -48,7 +48,7 @@ function InmubleFiltrado({ inmueblesFiltrados, estados }) {
                   <p className="h5 mt-2">{estado && estado.nombre}, {/* {municipio && municipio.nombre} */} .</p>
                 </div>
                 <h2 className={`h3 m-1 ${styles['property-title']}`}>{inmuble.nombre_desarrollo}</h2>
-                <p className="m-1">Desde</p>
+                <TipoInmuebleBanner modelo_tipo_uno={inmuble.modelo_tipo_uno} />
                 <span className={`h3 m-1 ${styles['property-price']}`}>
                   $ {numeral(inmuble.precio).format('0,0').replace(',', ',')} MXN
                 </span>
