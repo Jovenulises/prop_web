@@ -6,7 +6,7 @@ import MapComponent from './../../components/Google';
 async function fetchDetalle() {
     // Agrega idEstado y idMunicipio como parámetros a fetchData
 
-    const url = "https://www.propmexico.com/administrador/restApi/todosDesarrollos";
+    const url = "https://www.propmexico.com/administrador/restApi/todosDesarrollos/";
 
     const username = "tpTBK2QvT75a";
     const password = "9hntUZOb6fsw";
