@@ -23,97 +23,114 @@ function Inmuble({ inmueble, estados, municipios }) {
         const municipio = municipios.find((municipio) => municipio.id === inmuble.direccion_municipio);
         const handleLogoClick = () => {
           router.push(`/detalle/${inmuble.id}/#galeria`)
-          
+
         }
 
 
         return (
-          <div className="row mx-1 my-3 py-2  border border-2 border-dark-subtle  rounded-3 list-group-item-action" key={inmuble.id_inmueble}>
-            <div className="col-12 col-md-4">
+          <div className="row mx-1 my-3 bordere list-group-item-action" key={inmuble.id_inmueble}>
+            <div className="col-12 col-md-4 bordere-img">
               <ImagenBanner inmuble={inmuble} />
             </div>
 
 
-            <div className="col-12 col-md-8"
-             onClick={handleLogoClick}>
-              <div className={`d-flex mx-1 mt-2 ${styles['location']}`}>
-                <img className={` ${styles['small-image']}`} src="/ic_map_new.png" alt="Icono de ubicación" />
-                <p className="h5 mt-2">{estado && estado.nombre}, {municipio && municipio.nombre}.</p>
+            <div className="col-12 col-md-8 manita"
+              onClick={handleLogoClick}>
+              <div className={`d-flex mt-3 ${styles['location']}`}>
+                <img className={` ${styles['small-image']} img-fluid`} src="/ic_map_new.png" alt="Icono de ubicación" />
+                <p className="h6 mt-2"> {municipio && municipio.nombre}, {estado && estado.nombre}.</p>
                 {inmuble.premio_inmueble && (
-                  <img className={` ${styles['small-image']} ml-auto d-block`} src="/ic_gift_banner.png" alt={inmuble.premio_inmueble} />
+                  <img className={`img-fluid ${styles['small-image']} ml-auto d-block`} src="/ic_gift_banner.png" alt={inmuble.premio_inmueble} />
                 )}
               </div>
-              <h2 className={`h3 m-1 ${styles['property-title']}`}>{inmuble.nombre_desarrollo}</h2>
-              <TipoInmuebleBanner modelo_tipo_uno={inmuble.modelo_tipo_uno} />
-              <span className={`h3 m-1 ${styles['property-price']}`}>
-                $ {numeral(inmuble.precio).format('0,0').replace(',', ',')} MXN
-              </span>
-              <div className="row mx-4 pt-4">
-                <div className="col-12 col-md-12 me-5 pe-4 d-flex flex-column text-center">
+              <div>
+                <h2 className={`h4 m-1 ${styles['property-title']}`}>{inmuble.nombre_desarrollo}</h2>
+                <TipoInmuebleBanner modelo_tipo_uno={inmuble.modelo_tipo_uno} modelo_tipo_dos={inmuble.modelo_tipo_dos} municipio={municipio && municipio.nombre} />
+                <span className={`h4 ${styles['property-price']}`}>
+                  $ {numeral(inmuble.precio).format('0,0').replace(',', ',')} MXN
+                </span>
+              </div>
+              <div className="row">
+                <div className="col-12 col-md-9 pt-2 d-flex flex-column text-center">
                   <div className="row justify-content-between">
                     {inmuble.modelo_cuart_uno &&
                       <div className={`col-4 col-md-2 gift-m d-flex flex-column align-items-center property-detail ${styles['property-detail']}`}>
-                        <p className="">Cuartos</p>
+                        {/*  <p className="parrafo">Cuartos</p> */}
                         <div className="d-flex align-items-center">
                           <img className={` ${styles['small-image']}`} src="/ic_bed.png" alt="Icono de habitaciones" />
-                          <span>{inmuble.modelo_cuart_uno}</span>
+                          {/*   <span> {inmuble.modelo_cuart_uno}</span> */}
                         </div>
+                        <p className='parrafo'>dorm  <span> {inmuble.modelo_cuart_uno}</span> </p>
                       </div>
                     }
 
                     {inmuble.modelo_bano_uno &&
                       <div className={`col-4 col-md-2 gift-m d-flex flex-column align-items-center property-detail ${styles['property-detail']}`}>
-                        <p className="">Baños</p>
+                      {/*   <p className="parrafo">Baños</p> */}
                         <div className="d-flex align-items-center">
                           <img className={` ${styles['small-image']}`} src="/bano.png" alt="Icono de baños" />
-                          <span>{inmuble.modelo_bano_uno}</span>
+                       {/*    <span>{inmuble.modelo_bano_uno}</span> */}
                         </div>
+                        <p className='parrafo'>bañ <span>{inmuble.modelo_bano_uno}</span></p>
                       </div>
                     }
 
                     {inmuble.modelo_auto_uno &&
                       <div className={`col-4 col-md-2 gift-m d-flex flex-column align-items-center property-detail ${styles['property-detail']}`}>
-                        <p className="">Cochera</p>
+                      {/*   <p className="parrafo">Cochera</p> */}
                         <div className="d-flex align-items-center">
                           <img className={` ${styles['small-image']}`} src="/estacionamiento.png" alt="Icono de estacionamiento" />
-                          <span>{inmuble.modelo_auto_uno}</span>
+                      {/*     <span>{inmuble.modelo_auto_uno}</span> */}
                         </div>
+                        <p className='parrafo'>estac. <span>{inmuble.modelo_auto_uno}</span></p>
                       </div>
                     }
 
                     {inmuble.modelo_pisos_uno &&
                       <div className={`col-4 col-md-2 gift-m d-flex flex-column align-items-center property-detail  ${styles['top-m']} ${styles['property-detail']}`}>
-                        <p className="">pisos</p>
+               {/*          <p className="parrafo">pisos</p> */}
                         <div className="d-flex align-items-center">
                           <img className={` ${styles['small-image']}`} src="/piso_planta_detalle.png" alt="Icono de estacionamiento" />
-                          <span>{inmuble.modelo_pisos_uno}</span>
+                        {/*   <span>{inmuble.modelo_pisos_uno}</span> */}
                         </div>
+                        <p className='parrafo'>pi <span>{inmuble.modelo_pisos_uno}</span></p>
                       </div>
                     }
 
                     {inmuble.modelo_const_uno &&
                       <div className={`col-4 col-md-2 gift-m d-flex flex-column align-items-center property-detail  ${styles['top-m']} ${styles['property-detail']}`}>
-                        <p className="">Construcción</p>
+                 {/*        <p className="parrafo">Construcción</p> */}
                         <div className="d-flex align-items-center">
                           <img className={` ${styles['small-image']}`} src="/construccion.png" alt="Icono de estacionamiento" />
-                          <span>{inmuble.modelo_const_uno} mts²</span>
+                        {/*   <span>{inmuble.modelo_const_uno} mts²</span> */}
                         </div>
+                        <p className='parrafo'>cont. <span>{inmuble.modelo_const_uno} mts²</span></p>
                       </div>
                     }
 
                     {inmuble.modelo_area_uno &&
                       <div className={`col-4 col-md-2 gift-m d-flex flex-column align-items-center property-detail  ${styles['top-m']} ${styles['property-detail']}`}>
-                        <p className="">Predio</p>
+       {/*                  <p className="">Predio</p> */}
                         <div className="d-flex align-items-center">
                           <img className={` ${styles['small-image']}`} src="/area_total.png" alt="Icono de estacionamiento" />
-                          <span>{inmuble.modelo_area_uno} mts²</span>
+                          {/* <span>{inmuble.modelo_area_uno} mts²</span> */}
                         </div>
+                        <p className='parrafo'>pred. <span>{inmuble.modelo_area_uno} mts²</span></p>
+                    
                       </div>
                     }
 
                   </div>
                 </div>
-                <div className={`border-top mb-1 col-12 col-md-12 justify-content-between ${styles['margen']}`}>
+                
+                {inmuble.informacion_extra &&
+                <div className='px-3'>
+                  <p className='parrafo'>
+                  {inmuble && inmuble.informacion_extra ? inmuble.informacion_extra.substring(0, 110) : ''}...
+                  </p>
+                </div>
+      }
+                <div className={`border-top  mb-1 col-12 col-md-12 justify-content-between ${styles['margen']}`}>
                   <div className="justify-content-end d-flex">
                     <div className={`my-2 mx-1 pt-2 property-action ${styles['margenboton']} ${styles['property-action']}`}>
                       <button className={` ${styles['button-heart']} ${styles['property-button']}`}>

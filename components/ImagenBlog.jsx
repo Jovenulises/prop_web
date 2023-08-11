@@ -1,9 +1,7 @@
 "use client"
 import { useRouter } from 'next/navigation'
 import React from 'react';
-import Carousel from "nuka-carousel";
-
-export default function ImagenBanner({ inmuble }) {
+export default function ImagenBlog({ inmuble }) {
   //  console.log(inmuble);
   
   const router = useRouter()
@@ -14,10 +12,10 @@ export default function ImagenBanner({ inmuble }) {
   }
     return (
                 <div className="">
-                    <Carousel>
+                
                         {inmuble.images.map((item, index) => (
                             <img
-                                className="img-fluid bordere-img"
+                                className="img-fluid"
                                 src={item.image}
                                 alt={`Imagen ${index + 1}`}
                                 key={index}
@@ -25,7 +23,7 @@ export default function ImagenBanner({ inmuble }) {
                                 onClick={handleLogoClick}
                             />
                         ))}
-                    </Carousel>
+                    
                 </div>
           
     )

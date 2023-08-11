@@ -14,7 +14,7 @@
 .headerr {
     background-color: #fff;
     justify-content: space-between;
-    position: sticky;
+    position: sticky!important;
     top: 0;
     z-index: 10;
     height: 77px;

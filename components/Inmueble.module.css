@@ -12,6 +12,8 @@
 
 }
 
+
+
 .button-what {
     border-radius: 10px;
     width: 80px;
@@ -27,6 +29,11 @@
     border: none;
 
 }
+
+.manita{
+cursor: pointer !important;
+}
+
 
 .rounded-button {
     border-radius: 14px !important;
@@ -79,13 +86,20 @@
 
 /*botones fin*/
 .small-image {
+    width: 30px;
+    height: auto;
+    margin-right: 1px;
+
+}
+/* 
+
+.small-image {
     width: 40px;
     height: auto;
     margin-right: 17px;
 
 }
-
-
+ */
 
 @media (max-width: 768px) {
 

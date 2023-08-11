@@ -13,6 +13,7 @@
     "@react-google-maps/api": "^2.18.1",
     "axios": "^1.4.0",
     "bootstrap": "^4.6.0",
+    "bootstrap-icons": "^1.10.5",
     "eslint": "8.44.0",
     "eslint-config-next": "13.4.8",
     "next": "^13.4.8",
@@ -28,6 +29,6 @@
     "swiper": "^10.0.4"
   },
   "devDependencies": {
-    "standard": "17.1.0"
+    "standard": "^17.1.0"
   }
 }

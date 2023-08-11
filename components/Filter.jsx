@@ -4,20 +4,25 @@ import styles from './Filter.module.css';
 import React, { useState } from 'react';
 import InmubleFiltrado from './InmuebleFiltrado';
 
+import { useRouter } from 'next/navigation'
 
 
 
 
 
-const Filter = ({ inmueble, estados}) => {
+
+const Filter = ({ inmueble, estados }) => {
   // console.log(inmueble)
+
+
+  const router = useRouter()
 
 
   const [inmueblesFiltrados, setInmueblesFiltrados] = useState([]);
 
-  
+
   const [municipios, setMunicipios] = useState('');
-  
+
   const [estado, setEstado] = useState('');
   const [tipoPropiedad, setTipoPropiedad] = useState('');
   const [tipoTransaccion, setTipoTransaccion] = useState('');
@@ -45,14 +50,17 @@ const Filter = ({ inmueble, estados}) => {
 
   };
 
+  const handleLogoClick = () => {
+    router.push(`/inmuebles`)
 
+  }
 
 
   return (
     <div>
       <div className={`container-fluid ${styles['fondo-img']}`}>
         <div className="row justify-content-center align-items-center">
-          <h1 className={`text-center col-md-12 mt-5 p-5 ${styles.h1}`}>Busca tu Hogar</h1>
+          <h1 className={`text-center col-md-12 mt-5 p-5 ${styles.h1}`}>Encuentra tu Hogar</h1>
           <div className="col-md-4 col-12 align-items-center py-3 text-center form-element-container">
             <div className={`select-container mt-2 ${styles['select-container']}`}>
               <select
@@ -99,7 +107,8 @@ const Filter = ({ inmueble, estados}) => {
           <div className="col-12 col-md-2 mx-2 justify-content-md-start d-flex justify-content-center form-element-container">
             <button
               className={`btn btn-primary form-element ${styles['btn-primary']} ${styles['form-element']}`}
-              onClick={filtrarInmuebles}
+              /*    onClick={filtrarInmuebles} */
+              onClick={handleLogoClick}
             >
               Buscar
             </button>

@@ -19,7 +19,7 @@ export default function NavigationDetalle() {
                             <li><a href="#modelos">Modelos</a></li>
                             <li><a href="#mapa">Mapa</a></li>
                         </ul>
-                        <i className={`${styles.mobiles}bi bi-list`}></i>
+                        <i className={`${styles.mobiles}bi `}></i>
                     </nav>
                 </div>
             </div>

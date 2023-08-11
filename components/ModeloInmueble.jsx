@@ -122,111 +122,112 @@ export default function ModeloInmueble(inmuebleId) {
     return (
         <div>
             {modelos.map((modelo, i) => (
-
-                <div className="col-12 col-md-7 my-3 p-1" key={i}>
+                <div>
                     {modelo.nombre &&
+                        <div className="col-12 col-md-7 my-3 p-1" key={i}>
+                            {modelo.nombre &&
 
-                        <h2 className="h4">Modelo {modelo.nombre}</h2>
-                    }
-                    {modelo.precio &&
+                                <h2 className="h4">Modelo {modelo.nombre}</h2>
+                            }
+                            {modelo.precio &&
 
-                        <>
-                            <div className="d-flex">
-                                <TipoInmueble modelo_tipo_uno={modelo.tipo} />
-                                <span className='mx-3 px-3'> $ {Number(modelo.precio).toLocaleString()} MXN</span>
-                            </div>
+                                <>
+                                    <div className="d-flex">
+                                        <TipoInmueble modelo_tipo_uno={modelo.tipo} />
+                                        <span className='mx-3 px-3'> $ {Number(modelo.precio).toLocaleString()} MXN</span>
+                                    </div>
 
-                        </>
-                    }
-
-                    {modelo.cuartos &&
-                        <div className="d-flex justify-content-between text-center mt-3 pt-4 border-top">
+                                </>
+                            }
 
                             {modelo.cuartos &&
-                                <div className="gift-m d-flex flex-column align-items-center">
-                                    <p className="">Cuartos</p>
-                                    <div className="d-flex align-items-center">
-                                        <img className={` ${styles['small-image']}`} src="/ic_bed.png" alt="Icono de habitaciones" />
-                                        <span>{modelo.cuartos}</span>
-                                    </div>
+                                <div className="d-flex justify-content-between text-center mt-3 pt-4 border-top">
+
+                                    {modelo.cuartos &&
+                                        <div className="gift-m d-flex flex-column align-items-center">
+                                            <p className="">Cuartos</p>
+                                            <div className="d-flex align-items-center">
+                                                <img className={` ${styles['small-image']}`} src="/ic_bed.png" alt="Icono de habitaciones" />
+                                                <span>{modelo.cuartos}</span>
+                                            </div>
+                                        </div>
+                                    }
+                                    {modelo.banos &&
+                                        <div className="gift-m d-flex flex-column align-items-center">
+                                            <p className="">Baños</p>
+                                            <div className="d-flex align-items-center">
+                                                <img className={` ${styles['small-image']}`} src="/bano.png" alt="Icono de baños" />
+                                                <span>{modelo.banos}</span>
+                                            </div>
+                                        </div>
+                                    }
+                                    {modelo.autos &&
+                                        <div className="gift-m d-flex flex-column align-items-center">
+                                            <p className="">Cochera</p>
+                                            <div className="d-flex align-items-center">
+                                                <img className={` ${styles['small-image']}`} src="/estacionamiento.png" alt="Icono de estacionamiento" />
+                                                <span>{modelo.autos}</span>
+                                            </div>
+                                        </div>
+                                    }
+
                                 </div>
                             }
-                            {modelo.banos &&
-                                <div className="gift-m d-flex flex-column align-items-center">
-                                    <p className="">Baños</p>
-                                    <div className="d-flex align-items-center">
-                                        <img className={` ${styles['small-image']}`} src="/bano.png" alt="Icono de baños" />
-                                        <span>{modelo.banos}</span>
-                                    </div>
+                            <br />
+
+                            {modelo.cuartos &&
+                                <div className="d-flex justify-content-between text-center mt-3 pt-4 border-top">
+
+                                    {modelo.pisos &&
+                                        <div className="gift-m d-flex flex-column align-items-center">
+                                            <p className="">Pisos</p>
+                                            <div className="d-flex align-items-center">
+                                                <img className={` ${styles['small-image']}`} src="/construccion.png" alt="Icono de construcción" />
+                                                <span>{modelo.pisos}</span>
+                                            </div>
+                                        </div>
+                                    }
+
+                                    {modelo.construccion &&
+                                        <div className="gift-m d-flex flex-column align-items-center">
+                                            <p className="">Construcción</p>
+                                            <div className="d-flex align-items-center">
+                                                <img className={` ${styles['small-image']}`} src="/construccion.png" alt="Icono de construcción" />
+                                                <span>{modelo.construccion}</span>
+                                            </div>
+                                        </div>
+                                    }
+                                    {modelo.area &&
+                                        <div className="gift-m d-flex flex-column align-items-center">
+                                            <p className="">Predio</p>
+                                            <div className="d-flex align-items-center">
+                                                <img className={` ${styles['small-image']}`} src="/area_total.png"
+                                                    alt="Icono de área" />
+                                                <span>{modelo.area} mts²</span>
+                                            </div>
+                                        </div>
+                                    }
+
                                 </div>
                             }
-                            {modelo.autos &&
-                                <div className="gift-m d-flex flex-column align-items-center">
-                                    <p className="">Cochera</p>
-                                    <div className="d-flex align-items-center">
-                                        <img className={` ${styles['small-image']}`} src="/estacionamiento.png" alt="Icono de estacionamiento" />
-                                        <span>{modelo.autos}</span>
-                                    </div>
-                                </div>
+                            {modelo.desc &&
+                                <>
+                                    <h2 className="h3 text-center mt-5 py-4  border-top">Descripción</h2>
+                                    <p className="text-justify"> {modelo.desc} </p>
+                                </>
                             }
 
+                            {modelo.paseo &&
+                                <div className={`my-2 pt-2 text-center  ${styles['margenboto']}`}>
+                                    <a href={modelo.paseo}>
+                                        <button className={` ${styles['rounded-button-paseo']}`}>Paseo Virtual</button>
+                                    </a>
+                                </div>
+                            }
                         </div>
+
                     }
-                    <br />
-
-                    {modelo.cuartos &&
-                        <div className="d-flex justify-content-between text-center mt-3 pt-4 border-top">
-
-                            {modelo.pisos &&
-                                <div className="gift-m d-flex flex-column align-items-center">
-                                    <p className="">Pisos</p>
-                                    <div className="d-flex align-items-center">
-                                        <img className={` ${styles['small-image']}`} src="/construccion.png" alt="Icono de construcción" />
-                                        <span>{modelo.pisos}</span>
-                                    </div>
-                                </div>
-                            }
-
-                            {modelo.construccion &&
-                                <div className="gift-m d-flex flex-column align-items-center">
-                                    <p className="">Construcción</p>
-                                    <div className="d-flex align-items-center">
-                                        <img className={` ${styles['small-image']}`} src="/construccion.png" alt="Icono de construcción" />
-                                        <span>{modelo.construccion}</span>
-                                    </div>
-                                </div>
-                            }
-                            {modelo.area &&
-                                <div className="gift-m d-flex flex-column align-items-center">
-                                    <p className="">Predio</p>
-                                    <div className="d-flex align-items-center">
-                                        <img className={` ${styles['small-image']}`} src="/area_total.png"
-                                            alt="Icono de área" />
-                                        <span>{modelo.area} mts²</span>
-                                    </div>
-                                </div>
-                            }
-
-                        </div>
-                    }
-                    {modelo.desc &&
-                        <>
-                            <h2 className="h3 text-center mt-5 py-4  border-top">Descripción</h2>
-                            <p className="text-justify"> {modelo.desc} </p>
-                        </>
-                    }
-
-                    {modelo.paseo &&
-                        <div className={`my-2 pt-2 text-center  ${styles['margenboto']}`}>
-                            <a href={modelo.paseo}>
-                                <button className={` ${styles['rounded-button-paseo']}`}>Paseo Virtual</button>
-                            </a>
-                        </div>
-                    }
-                </div>
-
-
-            ))}
+                </div>))}
         </div>
     );
 }

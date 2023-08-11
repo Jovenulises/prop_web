@@ -6,7 +6,7 @@ import MapComponent from './../../components/Google';
 async function fetchDetalle() {
     // Agrega idEstado y idMunicipio como parámetros a fetchData
 
-    const url = "https://www.propmexico.com/administrador/restApi/todosDesarrollos/";
+    const url = "https://www.propmexico.com/administrador/restApi/todosDesarrollos//";
 
     const username = "tpTBK2QvT75a";
     const password = "9hntUZOb6fsw";
@@ -19,7 +19,7 @@ async function fetchDetalle() {
 
     if (response.ok) {
         const data = await response.json();
-        const detalle = data.banners.filter(inmuebles => inmuebles.activo === '1');
+        const detalle = data.banners;
 
         return detalle;
     } else {
@@ -30,7 +30,7 @@ async function fetchDetalle() {
 
 async function MapaPage() {
     const detalle = await fetchDetalle();
-    /* console.log(detalle) */
+    /* console.log(detalle)  */
     return (
         <div>
             <div>

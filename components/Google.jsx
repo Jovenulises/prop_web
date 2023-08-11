@@ -3,91 +3,154 @@
 import { GoogleMap, LoadScript, MarkerF, InfoWindow } from "@react-google-maps/api";
 import numeral from 'numeral';
 import { useRouter } from 'next/navigation'
+import { useState, useEffect, useRef } from 'react'
 
 export default function MapComponent({ detalle }) {
-//console.log(detalle)
   const router = useRouter()
+
+  const [zoom, setZoom] = useState(0);
+  const [userLocation, setUserLocation] = useState(null);
+  const mapRef = useRef();
 
   const propertyTypeToColor = {
     'CASA': '#1146a3',
     'DEPARTAMENTO': '#b52f2f',
     'RCASA': 'yellow',
     'RDEPARTAMENTO': 'green',
-    'CPREVENTA': 'red',
-    'DPREVENTA': 'blue',
+    'CPREVENTA': '#1146a3',
+    'DPREVENTA': '#b52f2f',
   };
 
   const mapStyles = {
-    height: "570px",
+    height: "590px",
     width: "100%"
   };
 
-  const defaultCenter = {
+
+  useEffect(() => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition((position) => {
+        setUserLocation({
+          lat: position.coords.latitude,
+          lng: position.coords.longitude,
+        });
+      }, () => {
+        console.error("Permission denied");
+        setUserLocation({
+          lat: parseFloat(detalle[0].direccion_latitud),
+          lng: parseFloat(detalle[0].direccion_longitud),
+        });
+      });
+    } else {
+      console.error("Geolocation not supported");
+      setUserLocation({
+        lat: parseFloat(detalle[0].direccion_latitud),
+        lng: parseFloat(detalle[0].direccion_longitud),
+      });
+    }
+  }, []);
+
+
+  const defaultCenter = userLocation || {
     lat: parseFloat(detalle[0].direccion_latitud),
     lng: parseFloat(detalle[0].direccion_longitud)
   }
 
+  const handleCenterChanged = () => {
+    if (mapRef.current) {
+      const currentCenter = mapRef.current.getCenter();
+      console.log('Centro actual del mapa:', currentCenter.toString());
+    }
+  };
+  
+
+
+  const handleZoomChanged = () => {
+    if (mapRef.current) {
+      const currentZoom = mapRef.current.getZoom();
+      setZoom(currentZoom);
+      // Cambia el centro del mapa al centro deseado cada vez que cambia el zoom
+      mapRef.current.panTo(defaultCenter);
+    }
+  }
+
+  if (!userLocation) {
+    return <div>Loading...</div>; // muestra una pantalla de carga mientras se obtiene la ubicación del usuario
+  }
 
   return (
     <LoadScript googleMapsApiKey='AIzaSyA889ZxazkPDgBYD58fWZEvMNdKjmUSMZo'>
       <GoogleMap
         mapContainerStyle={mapStyles}
-        zoom={13}
+        zoom={7}
         center={defaultCenter}
+        onLoad={(map) => { mapRef.current = map; }}
+        onZoomChanged={handleZoomChanged}
+        onCenterChanged={handleCenterChanged} // Añade este evento
       >
         {detalle.map((inmueble) => {
           const propertyColor = propertyTypeToColor[inmueble.modelo_tipo_uno] || 'gray';
-      //   console.log(inmueble.id_inmueble)
-         
-       const markerIcon = {
-            path: 'M0 -1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm-2 4a2 2 0 0 1 4 0c0 2-2 4-2 4s-2-2-2-4z', // SVG path para un círculo
+
+          const markerIcon = {
+            path:  'M -2, 0 a 2,2 0 1,0 4,0 a 2,2 0 1,0 -4,0', // SVG path para un círculo
             fillColor: propertyColor,
             fillOpacity: 1,
             strokeWeight: 0,
-            scale: 4,
+            scale: 2 ,
           };
 
-          
-          // gray será el color predeterminado si no se encuentra una coincidencia
           return (
             <MarkerF
-              key={inmueble.id_inmueble}
+              key={inmueble.id}
               position={{
                 lat: parseFloat(inmueble.direccion_latitud),
                 lng: parseFloat(inmueble.direccion_longitud),
               }}
               icon={{ ...markerIcon, fillColor: propertyColor }}
+              
+              onClick={() => {
+                if (inmueble && inmueble.id) {
+                  router.push(`/detalle/${inmueble.id}/#galeria`);
+                  console.log(inmueble.id);
+                } else {
+                  console.error('Error: inmueble.id_inmueble no existe');
+                }
+              }}
             >
-              <InfoWindow
-                style={{ background: "red" }}
-                position={{
-                  lat: parseFloat(inmueble.direccion_latitud),
-                  lng: parseFloat(inmueble.direccion_longitud),
-                }}
-              >
-                <div className="list-group-item-action"
-                  style={{
-                    border: `4px solid ${propertyColor}`,
-                    backgroundColor: "white",
-                    color: "black",
-                    padding: "10px",
-                    borderRadius: 8,
+              {zoom > 8 && inmueble.precio &&
+                <InfoWindow
+                  style={{ background: "red" }}
+                  position={{
+                    lat: parseFloat(inmueble.direccion_latitud),
+                    lng: parseFloat(inmueble.direccion_longitud),
                   }}
-                  onClick={() => {
-                    if (inmueble && inmueble.id) {
-                      router.push(`/detalle/${inmueble.id}`);
-                      console.log(inmueble.id);
-                    } else {
-                      console.error('Error: inmueble.id_inmueble no existe');
-                    }
-                  }}
-             >
-                 <span> $ {numeral(inmueble.precio).format("0,0").replace(",", ",")}{" "}</span>
-                </div>
-              </InfoWindow>
+                >
+                  <div className="list-group-item-action btn"
+                    style={{
+                      border: `4px solid ${propertyColor}`,
+                      backgroundColor: "white",
+                      color: "black",
+                      padding: "10px",
+                      borderRadius: 8,
+                    }}
+                    onClick={() => {
+                      if (inmueble && inmueble.id) {
+                        router.push(`/detalle/${inmueble.id}/#galeria`);
+                        console.log(inmueble.id);
+                      } else {
+                        console.error('Error: inmueble.id_inmueble no existe');
+                      }
+                    }}
+                  >
+
+                    <span> $ {numeral(inmueble.precio).format("0,0").replace(",", ",")}{" "}</span>
+
+                  </div>
+                </InfoWindow>
+              }
             </MarkerF>
           );
-                  })}
+        })}
       </GoogleMap>
     </LoadScript>
   )

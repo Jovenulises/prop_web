@@ -56,7 +56,7 @@ async function getDetalle(id) {
 
 async function DetallePage({ params }) {
     const inmuebleId = await getDetalle(params.id);
-    
+
     if (!inmuebleId) {
         // Handle the case where no inmueble was found
         // This could be rendering an error message or redirecting the user, etc.
@@ -189,6 +189,54 @@ async function DetallePage({ params }) {
                 <div id="modelos" >
                     <ModeloInmueble inmuebleId={inmuebleId} />
                 </div>
+                <div className='col-md-8 col-12 text-center'>
+                    <div>
+                        {inmuebleId.url_brocker &&
+                            <div className={` my-2 pt-2 ${styles['margenboton']}`}>
+                                <a href={inmuebleId.url_brocker}>
+                                    <button className={` ${styles['botones-extras']}`}>BROCHURE</button>
+                                </a>
+                            </div>
+                        }
+                    </div>
+                    <div>
+                        {inmuebleId.ubicacion &&
+                            <div className={` my-2 pt-2 ${styles['margenboton']}`}>
+                                <a href={inmuebleId.ubicacion}>
+                                    <button className={` ${styles['botones-extras-verde']}`}>UBICACIÓN</button>
+                                </a>
+                            </div>
+                        }
+                    </div>
+                    <div>
+                        {inmuebleId.lista_precios &&
+                            <div className={` my-2 pt-2 ${styles['margenboton']}`}>
+                                <a href={inmuebleId.lista_precios}>
+                                    <button className={` ${styles['botones-extras-azul']}`}>CALCULA HIPOTECA</button>
+                                </a>
+                            </div>
+                        }
+                    </div>
+                    <div>
+                        {inmuebleId.num_mudanza &&
+                            <div className={` my-2 pt-2 ${styles['margenboton']}`}>
+                                <a href={inmuebleId.num_mudanza}>
+                                    <button className={` ${styles['botones-extras-azul']}`}>ASISTENCIA HIPOTECARIA DIRECTA</button>
+                                </a>
+                            </div>
+                        }
+                    </div>
+                    <div>
+                        {inmuebleId.post_redes &&
+                            <div className={` my-2 pt-2 ${styles['margenboton']}`}>
+                                <a href={inmuebleId.post_redes}>
+                                    <button className={` ${styles['botones-extras']}`}>INVENTARIO</button>
+                                </a>
+                            </div>
+                        }
+
+                    </div>
+                </div>
                 <div className="col-12 col-md-8">
                     <div className="d-flex align-items-center">
                         <img className={` ${styles['small-image']}`} src="/ic_map_new.png" alt="Icono de estacionamiento" />
@@ -209,4 +257,4 @@ async function DetallePage({ params }) {
     )
 }
 
-export default DetallePage
+export default DetallePage;
